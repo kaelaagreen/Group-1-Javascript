@@ -4,3 +4,50 @@ div {
     width: 100px;
     border:1px solid black;
 }
+
+
+body {
+    background: url(trees-500x800.png); /* for mobile view */
+    font-family: "Yomogi", cursive;
+}
+
+table {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: "Yomogi", cursive;
+    color:rgb(113, 101, 189);
+    
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 1.25em;
+}
+
+
+
+@media only screen and (min-device-width: 500px) {
+
+
+body {
+    background: url(trees-800x800.png);
+    background-repeat: repeat-x;
+    padding-top: 30px;
+}
+
+div {
+    height: 100px;
+    width: 100px;
+    background: url(square-100x100.png);
+    
+}
+
+}
