@@ -1,8 +1,7 @@
 div {
-<<<<<<< HEAD
-    background-color: aqua;
-    height: 100px;
-    width: 100px;
+    background: url(square-75x75.png);
+    height: 75px;
+    width: 75px;
     border:1px solid black;
 }
 
@@ -51,12 +50,7 @@ div {
     
 }
 
-=======
-  background-color: aqua;
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
-}
+ 
 
 button {
     border: 1px solid black;
@@ -74,5 +68,4 @@ button {
     border-radius: 22px;
     color: red;
     background-color: yellow;
->>>>>>> ae1942dd2baf1261fe9064d6cb1ba9f9abd57662
 }
