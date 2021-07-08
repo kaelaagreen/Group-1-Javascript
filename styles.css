@@ -1,5 +1,4 @@
 div {
-<<<<<<< HEAD
     background-color: aqua;
     height: 100px;
     width: 100px;
@@ -51,7 +50,6 @@ div {
     
 }
 
-=======
   background-color: aqua;
   height: 100px;
   width: 100px;
@@ -74,5 +72,4 @@ button {
     border-radius: 22px;
     color: red;
     background-color: yellow;
->>>>>>> ae1942dd2baf1261fe9064d6cb1ba9f9abd57662
 }
