@@ -1,60 +1,11 @@
-
-/* MOBILE VIEW*/
-
-div {
-    background: url(square-75x75.png);
-    height: 75px;
-    width: 75px;
-    border:1px solid black;
-}
+* {
+    padding: 0;
+    margin: 0;
+  }
 
 body {
     background: url(trees-500x800.png); /* for mobile view */
     font-family: "Yomogi", cursive;
-}
-
-table {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-h1, h2 {
-    text-align: center;
-    font-family: "Yomogi", cursive;
-    color:rgb(113, 101, 189);
-    
-}
-
-h1 {
-    font-size: 1.5em;
-}
-
-h2 {
-    font-size: 1.25em;
-}
-
-
-/*DESKTOP VIEW*/
-
-@media only screen and (min-device-width: 500px) {
-
-
-body {
-    background: url(trees-800x800.png);
-    background-repeat: repeat-x;
-    padding-top: 30px;
-    display: flex;
-}
-
-div {
-    border: 1px solid black;
-    display: flex;
-}
-
-.cardContainer{
-    margin:auto;
-    
 }
 
 button {
@@ -66,6 +17,20 @@ button {
     background-color: yellow;
 }
 
+.cardContainer{
+        width: 490px;
+        height: 490px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        perspective: 1000px;
+    }
+
+.card{
+    box-sizing: border-box;
+}
 .reset {
     border: 1px solid black;
     height: 50px;
@@ -73,6 +38,4 @@ button {
     border-radius: 22px;
     color: red;
     background-color: yellow;
-}
-
-}
+} 
