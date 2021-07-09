@@ -44,15 +44,18 @@ body {
     background: url(trees-800x800.png);
     background-repeat: repeat-x;
     padding-top: 30px;
+    display: flex;
 }
 
 div {
-    height: 100px;
-    width: 100px;
-    background: url(square-100x100.png);
     border: 1px solid black;
+    display: flex;
 }
- 
+
+.cardContainer{
+    margin:auto;
+    
+}
 
 button {
     border: 1px solid black;
