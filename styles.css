@@ -30,6 +30,7 @@ button {
 
 .card{
     box-sizing: border-box;
+    transform: rotateY(180deg);
 }
 .reset {
     border: 1px solid black;
@@ -39,3 +40,9 @@ button {
     color: red;
     background-color: yellow;
 } 
+
+.card {
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
