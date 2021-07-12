@@ -1,8 +1,141 @@
 alert("Group 1 RULES");
 
-// What is the setInterval() in relation with the clearInterval() method and how it works together?
-//The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).  
-//The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
+
+
+let cardFronts = document.querySelectorAll(".card_front");
+
+let cardBacks = document.querySelectorAll(".card_bottom");
+
+let cardsArray = document.querySelectorAll(".card");
+
+let hasFlipped = false; // checking if cards have been flipped or not before deciding if it is a match or not
+
+let firstCard, secondCard; // <-- sets empty variables that will be assigned a value after our "flip" function runs.
+
+let lockBoard = false; // variable for locking board after cards have flipped. Player cannot select more than 2 cards at a time
+
+
+
+
+
+
+function shuffleCards () {
+    cardsArray.forEach(card => {
+        let random = Math.floor(Math.random() * 16);
+        card.style.order = random;
+        console.log(random)
+    })
+    
+}
+
+shuffleCards();
+
+
+
+
+
+cardsArray.forEach(card => card.addEventListener("click", flipCard));
+// uses classList to toggle a css class onto each card inside our .card array
+
+
+
+
+
+
+function flipCard() {
+    // console.log(this); //checks value for "this"
+    if (lockBoard === true) {
+        return;
+    }
+
+    // makes sure first card cannot be double clicked, taking both firstCard and secondCard place
+    if (this === firstCard) {
+        return;
+    }
+
+    this.classList.toggle("flip");
+
+    if (hasFlipped === false) {
+        // this condition means it is before the first click
+        hasFlipped = true; // re-assigning value to "true" because a card has been clicked
+        firstCard = this;
+        // console.log(hasFlipped, firstCard) <-- we can check if it works. Whenn we click a second card, it will not work because the "false" condition can no longer be met.
+    } else {
+        hasFlipped = false; // hasFlipped resets to false
+        secondCard = this; // second card will automatically be assigned here
+
+        checkMatch(); // call on check for match function
+    };
+ 
+};
+
+
+
+
+
+
+
+function checkMatch () {
+    if (firstCard.dataset.name === secondCard.dataset.name) { 
+     
+        removeCard();// if there's a match, remove both cards
+
+    } else {
+
+       unflipCards(); // if there's no match, call unflip cards functions
+
+    };
+
+    // could also use ternary operator here.
+
+
+};
+
+
+
+
+
+
+
+function removeCard () {
+    
+    lockBoard = true; 
+     setTimeout( () => {
+        firstCard.style.visibility = "hidden";
+        secondCard.style.visibility = "hidden";
+
+ 
+        lockBoard = false;
+        hasFlipped = false;
+     }, 600);
+    
+
+};
+
+
+function unflipCards () {
+     // no match
+    lockBoard = true; // re-assign value to true if cards are flipped
+
+     setTimeout(() => {
+        firstCard.classList.remove("flip");
+        secondCard.classList.remove("flip");
+
+        lockBoard = false;
+        hasFlipped = false; // re-assign to false, to reset board
+        
+    }, 1500); // use setTimeout to allow second card to be able to flip still
+    
+};
+
+
+
+
+
+function reset () {
+   
+    
+}
 
 
 var timer = document.querySelector('h3')
@@ -16,12 +149,34 @@ if(startTimer){
     startingTime = 30
     return startTimer = 0
   }else{
+    resetBoard();
     return startTimer = setInterval(()=>{
       timer.innerHTML = `00:${--startingTime}`
-    }, 1000)
+    }, 1000);
+
+    
   }
+  
 }
 
+
+// What is the setInterval() in relation with the clearInterval() method and how it works together?
+//The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).  
+//The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
+// ~~declaring variables that will be used again.~~
+
+let closeButton = document.querySelector("span");
+let modal = document.querySelector(".modal");
+
+closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+})
+
+function resetBoard () {
+    cardsArray.forEach(card => card.style.visibility = "visible");
+    cardsArray.forEach(card => card.classList.remove("flip"));
+    shuffleCards();
+}
 
 //Misc notes: 
 
