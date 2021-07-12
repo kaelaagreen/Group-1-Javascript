@@ -24,7 +24,7 @@ let startStopTimer = () => {
     clearInterval(startTimer);
     timer.innerHTML = '00:30'
     startingTime = 30
-    return startTimer = undefined
+    return startTimer = 0
   }else{
     return startTimer = setInterval(()=>{
       timer.innerHTML = `00:0${startingTime--}`
