@@ -5,10 +5,10 @@ alert("Group 1 RULES");
 //The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
 
 
-let timer = document.querySelector('h3')
-let startingTime = 30
-let startTimer;
-let startStopTimer = () => {
+var timer = document.querySelector('h3')
+var startingTime = 30
+var startTimer;
+var startStopTimer = () => {
 
 if(startTimer){
     clearInterval(startTimer);
@@ -17,7 +17,7 @@ if(startTimer){
     return startTimer = 0
   }else{
     return startTimer = setInterval(()=>{
-      timer.innerHTML = `00:${startingTime--}`
+      timer.innerHTML = `00:${--startingTime}`
     }, 1000)
   }
 }

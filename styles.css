@@ -25,12 +25,10 @@ button {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        perspective: 1000px;
     }
 
 .card{
     box-sizing: border-box;
-    transform: rotateY(180deg);
 }
 .reset {
     border: 1px solid black;
@@ -43,6 +41,4 @@ button {
 
 .card {
     transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .5s;
 }
