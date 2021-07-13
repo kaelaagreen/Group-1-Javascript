@@ -15,9 +15,34 @@ let firstCard, secondCard; // <-- sets empty variables that will be assigned a v
 let lockBoard = false; // variable for locking board after cards have flipped. Player cannot select more than 2 cards at a time
 
 
+let closeButton = document.querySelector("span");
+let modal = document.querySelector(".modal");
 
+closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+})
 
+var timer = document.querySelector('h3')
+var startingTime = 60
+var startTimer;
+var startStopTimer = () => {
 
+if(startTimer){
+    clearInterval(startTimer);
+    timer.innerHTML = '1:00'
+
+  }else{
+    resetBoard();
+    setTimeout(() => {
+        clearInterval(startTimer);
+        alert("Time's Up!");
+    }, 61000)
+    return startTimer = setInterval(()=>{
+      timer.innerHTML = `00:${--startingTime}`
+    }, 1000)
+    ;
+}
+}
 
 function shuffleCards () {
     cardsArray.forEach(card => {
@@ -132,45 +157,12 @@ function unflipCards () {
 
 
 
-function reset () {
-   
-    
-}
-
-
-var timer = document.querySelector('h3')
-var startingTime = 30
-var startTimer;
-var startStopTimer = () => {
-
-if(startTimer){
-    clearInterval(startTimer);
-    timer.innerHTML = '00:30'
-    startingTime = 30
-    return startTimer = 0
-  }else{
-    resetBoard();
-    return startTimer = setInterval(()=>{
-      timer.innerHTML = `00:${--startingTime}`
-    }, 1000);
-
-    
-  }
-  
-}
-
 
 // What is the setInterval() in relation with the clearInterval() method and how it works together?
 //The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).  
 //The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
 // ~~declaring variables that will be used again.~~
 
-let closeButton = document.querySelector("span");
-let modal = document.querySelector(".modal");
-
-closeButton.addEventListener("click", () => {
-    modal.style.display = "none";
-})
 
 function resetBoard () {
     cardsArray.forEach(card => card.style.visibility = "visible");
