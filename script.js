@@ -20,29 +20,59 @@ let modal = document.querySelector(".modal");
 
 closeButton.addEventListener("click", () => {
     modal.style.display = "none";
-})
+});
 
-var timer = document.querySelector('h3')
-var startingTime = 60
-var startTimer;
-var startStopTimer = () => {
+// var timer = document.querySelector('h3')
+// var startingTime = 60
+// var startTimer;
+// var timeout;
+// var startStopTimer = () => {
 
-if(startTimer){
-    clearInterval(startTimer);
-    timer.innerHTML = '1:00'
+// if(startTimer){
+//     resetBoard();
+//     clearInterval(startTimer);
+//     clearTimeout(timeout);
+//     timer.innerHTML = '1:00';
 
-  }else{
-    resetBoard();
-    setTimeout(() => {
-        clearInterval(startTimer);
-        alert("Time's Up!");
-    }, 61000)
-    return startTimer = setInterval(()=>{
-      timer.innerHTML = `00:${--startingTime}`
-    }, 1000)
-    ;
+//   }else{
+    
+//     timeout = setTimeout(() => {
+//         clearInterval(startTimer);
+//         alert("Time's Up!");
+//     }, 61000)
+//     return startTimer = setInterval(()=>{
+//       timer.innerHTML = `00:${--startingTime}`
+//     }, 1000)
+//     ;
+// }
+// }
+
+var timerText = document.querySelector('h3');
+var startingTime = 59;
+var timeout;
+var timerOn = 0;
+
+function startTimer () {
+    timerText.innerHTML = `00:${startingTime}`;
+    startingTime = startingTime -1;
+    timeout = setTimeout(startTimer, 1000);
 }
+
+function timerIsOn () {
+    if (!timerOn) {
+        timerOn = 1;
+        startTimer()
+    }
 }
+
+function stopTimer () {
+    clearTimeout(timeout);
+    timerOn = 0;
+    startingTime = 59;
+    timerText.innerHTML = `01:00`;
+}
+
+
 
 function shuffleCards () {
     cardsArray.forEach(card => {
