@@ -1,5 +1,22 @@
 alert("Group 1 RULES");
 
+let volumeButton = document.querySelector(".volumeButton");
+let soundMute = document.querySelector(".fa-volume-off");
+let soundUp = document.querySelector(".fa-volume-up");
+var music = document.querySelector("#music");
+ debugger
+
+volumeButton.addEventListener("click", () => {
+    if (music.paused){
+        soundMute.style.display = "none";
+        soundUp.style.display = "block";
+        music.play();
+    } else {
+        soundMute.style.display = "block";
+        soundUp.style.display = "none";
+        music.pause();
+    }
+});
 
 
 let cardFronts = document.querySelectorAll(".card_front");
@@ -55,26 +72,13 @@ var section = document.querySelector("section");
 let closeButton2 = document.querySelector(".close2");
 let closeButton3 = document.querySelector(".close3");
 
-let soundMute = document.querySelector(".fa-volume-off");
-let soundUp = document.querySelector(".fa-volume-up");
-var music = document.querySelector("#music");
-
-soundUp.addEventListener("click", () => {
-    soundMute.style.display = "block";
-    soundUp.style.display = "none";
-    music.pause();
-})
-
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
     startingTime = startingTime -1;
     timeout = setTimeout(startTimer, 1000);
     section.style.pointerEvents = "all";
-
-    soundMute.style.display = "none";
-    soundUp.style.display = "block";
-    music.play();
+    document.querySelector(".start").style.pointerEvents = "none";
 
     if(removedCards.length == 16){
         console.log(startingTime);
@@ -111,6 +115,7 @@ function stopTimer () {
     startingTime = 59;
     timerText.innerHTML = `01:00`;
     resetBoard();
+    document.querySelector(".start").style.pointerEvents = "all";
 }
 
 
