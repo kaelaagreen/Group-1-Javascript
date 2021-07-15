@@ -56,6 +56,11 @@ function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
     startingTime = startingTime -1;
     timeout = setTimeout(startTimer, 1000);
+
+    if (startingTime == -2) {
+        stopTimer();
+        alert("Time is up");
+    }
 }
 
 function timerIsOn () {
@@ -71,6 +76,7 @@ function stopTimer () {
     startingTime = 59;
     timerText.innerHTML = `01:00`;
 }
+
 
 
 
@@ -150,7 +156,7 @@ function checkMatch () {
 
 
 
-
+var removedCards = [];
 
 function removeCard () {
     
@@ -159,6 +165,9 @@ function removeCard () {
         firstCard.style.visibility = "hidden";
         secondCard.style.visibility = "hidden";
 
+        removedCards.push(firstCard);
+        removedCards.push(secondCard);
+        console.log(removedCards);
  
         lockBoard = false;
         hasFlipped = false;
@@ -215,3 +224,5 @@ function resetBoard () {
 //         }
 //       }
 //     }
+
+
