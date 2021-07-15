@@ -53,6 +53,8 @@ var timeout;
 var timerOn = 0;
 var section = document.querySelector("section");
 let closeButton2 = document.querySelector(".close2");
+let closeButton3 = document.querySelector(".close3");
+
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
@@ -74,7 +76,11 @@ function startTimer () {
     } else if (startingTime == -2) {
         stopTimer();
         resetBoard();
-        alert("Time is up");
+        let modal3 = document.querySelector(".modal3");
+        modal3.style.display = "block";
+        closeButton3.addEventListener("click", () => {
+        modal3.style.display = "none";
+        });
     }
 }
 
