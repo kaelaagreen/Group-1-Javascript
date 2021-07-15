@@ -15,7 +15,7 @@ let firstCard, secondCard; // <-- sets empty variables that will be assigned a v
 let lockBoard = false; // variable for locking board after cards have flipped. Player cannot select more than 2 cards at a time
 
 
-let closeButton = document.querySelector("span");
+let closeButton = document.querySelector(".close");
 let modal = document.querySelector(".modal");
 
 closeButton.addEventListener("click", () => {
@@ -52,6 +52,7 @@ var startingTime = 59;
 var timeout;
 var timerOn = 0;
 var section = document.querySelector("section");
+let closeButton2 = document.querySelector(".close2");
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
@@ -61,7 +62,12 @@ function startTimer () {
 
     if(removedCards.length == 16){
         console.log(startingTime);
-        alert (startingTime + 2);
+        document.querySelector(".displayedTime").innerHTML = `${startingTime + 2} seconds!`;
+        let modal2 = document.querySelector(".modal2");
+        modal2.style.display = "block";
+        closeButton2.addEventListener("click", () => {
+            modal2.style.display = "none";
+        });
         stopTimer();
         resetBoard();
     
@@ -84,6 +90,7 @@ function stopTimer () {
     timerOn = 0;
     startingTime = 59;
     timerText.innerHTML = `01:00`;
+    resetBoard();
 }
 
 
@@ -197,7 +204,7 @@ function unflipCards () {
         lockBoard = false;
         hasFlipped = false; // re-assign to false, to reset board
         
-    }, 1500); // use setTimeout to allow second card to be able to flip still
+    }, 600); // use setTimeout to allow second card to be able to flip still
     
 };
 
