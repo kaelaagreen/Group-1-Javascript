@@ -51,14 +51,23 @@ var timerText = document.querySelector('h3');
 var startingTime = 59;
 var timeout;
 var timerOn = 0;
+var section = document.querySelector("section");
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
     startingTime = startingTime -1;
     timeout = setTimeout(startTimer, 1000);
+    section.style.pointerEvents = "all";
 
-    if (startingTime == -2) {
+    if(removedCards.length == 16){
+        console.log(startingTime);
+        alert (startingTime + 2);
         stopTimer();
+        resetBoard();
+    
+    } else if (startingTime == -2) {
+        stopTimer();
+        resetBoard();
         alert("Time is up");
     }
 }
@@ -207,6 +216,8 @@ function resetBoard () {
     cardsArray.forEach(card => card.style.visibility = "visible");
     cardsArray.forEach(card => card.classList.remove("flip"));
     shuffleCards();
+    removedCards = [];
+    section.style.pointerEvents = "none";
 }
 
 //Misc notes: 
