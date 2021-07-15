@@ -55,12 +55,26 @@ var section = document.querySelector("section");
 let closeButton2 = document.querySelector(".close2");
 let closeButton3 = document.querySelector(".close3");
 
+let soundMute = document.querySelector(".fa-volume-off");
+let soundUp = document.querySelector(".fa-volume-up");
+var music = document.querySelector("#music");
+
+soundUp.addEventListener("click", () => {
+    soundMute.style.display = "block";
+    soundUp.style.display = "none";
+    music.pause();
+})
+
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
     startingTime = startingTime -1;
     timeout = setTimeout(startTimer, 1000);
     section.style.pointerEvents = "all";
+
+    soundMute.style.display = "none";
+    soundUp.style.display = "block";
+    music.play();
 
     if(removedCards.length == 16){
         console.log(startingTime);
@@ -248,5 +262,4 @@ function resetBoard () {
 //         }
 //       }
 //     }
-
 
