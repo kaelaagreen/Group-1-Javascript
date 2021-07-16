@@ -7,6 +7,22 @@ body {
   background: url(trees-500x800.png) rgb(1, 168, 168); /* for mobile view */ /*add second color that fills in the bottom along Y-axis and gets rid of white bottom */
   background-repeat: repeat-x;
   font-family: "Yomogi", cursive;
+  /* position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0; */
+
+}
+
+@media only screen and (min-width: 768px){
+
+  .theGame{
+    display: flex;
+    flex-direction: row;
+  }
+  
+
 }
 
 .cardContainer {
@@ -19,6 +35,8 @@ body {
   flex-wrap: wrap;
   perspective: 1000px; /* adds depth to cards when flipping */
   pointer-events: none;
+  width: auto;
+  height:60vh;
 }
 
 .card {
