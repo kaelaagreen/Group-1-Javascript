@@ -14,7 +14,7 @@ body {
   right:0; */
 
 }
-
+/* 
 @media only screen and (min-width: 768px){
 
   .theGame{
@@ -37,11 +37,11 @@ body {
     width: auto;
     height: 60vh;
   }
-}
+} */
 
 .cardContainer {
-  width: 450px; /* changed height + width to make images bigger */
-  height: 450px;
+  width: 600px; /* changed height + width to make images bigger */
+  height: 600px;
   margin: auto;
   display: flex;
   justify-content: center;
