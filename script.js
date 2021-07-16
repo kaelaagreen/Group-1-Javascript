@@ -6,18 +6,21 @@ let soundUp = document.querySelector(".fa-volume-up");
 var music = document.querySelector("#music");
  debugger
 
-volumeButton.addEventListener("click", () => {
-    if (music.paused){
-        soundMute.style.display = "none";
-        soundUp.style.display = "block";
-        music.play();
-    } else {
-        soundMute.style.display = "block";
-        soundUp.style.display = "none";
-        music.pause();
-    }
-});
+function playMusic(){
+    volumeButton.addEventListener("click", () => {
+        if (music.paused){
+            soundMute.style.display = "none";
+            soundUp.style.display = "block";
+            music.play();
+        } else {
+            soundMute.style.display = "block";
+            soundUp.style.display = "none";
+            music.pause();
+        }
+    });
 
+}
+console.log(music);
 
 let cardFronts = document.querySelectorAll(".card_front");
 
@@ -37,6 +40,7 @@ let modal = document.querySelector(".modal");
 
 closeButton.addEventListener("click", () => {
     modal.style.display = "none";
+    playMusic();
 });
 
 // var timer = document.querySelector('h3')
@@ -71,7 +75,8 @@ var timerOn = 0;
 var section = document.querySelector("section");
 let closeButton2 = document.querySelector(".close2");
 let closeButton3 = document.querySelector(".close3");
-
+let winner = document.querySelector("#win");
+let loser = document.querySelector("#lose");
 
 function startTimer () {
     timerText.innerHTML = `00:${startingTime}`;
@@ -90,6 +95,7 @@ function startTimer () {
         });
         stopTimer();
         resetBoard();
+        winner.play();
     
     } else if (startingTime == -2) {
         stopTimer();
@@ -99,6 +105,7 @@ function startTimer () {
         closeButton3.addEventListener("click", () => {
         modal3.style.display = "none";
         });
+        loser.play();
     }
 }
 
@@ -172,8 +179,8 @@ function flipCard() {
 };
 
 
-
-
+let yayClip = document.querySelector("#food");
+let booClip = document.querySelector("#animal");
 
 
 
@@ -181,7 +188,11 @@ function checkMatch () {
     if (firstCard.dataset.name === secondCard.dataset.name) { 
      
         removeCard();// if there's a match, remove both cards
-
+        if (firstCard.dataset.type === "food" && secondCard.dataset.type === "food"){
+            yayClip.play();
+        } else {
+            booClip.play();
+        }
     } else {
 
        unflipCards(); // if there's no match, call unflip cards functions
