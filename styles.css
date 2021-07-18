@@ -1,3 +1,5 @@
+/* ~~~~~~~~~~~MOBILE VIEW~~~~~~~~~~~~~ */
+
 * {
   padding: 0;
   margin: 0;
@@ -7,41 +9,36 @@ body {
   background: url(trees-500x800.png) rgb(1, 168, 168); /* for mobile view */ /*add second color that fills in the bottom along Y-axis and gets rid of white bottom */
   background-repeat: repeat-x;
   font-family: "Yomogi", cursive;
-  /* position:fixed;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0; */
-
 }
-/* 
-@media only screen and (min-width: 768px){
 
-  .theGame{
-    display: flex;
-    flex-direction: row;
-  }
+header {
+  width: 100%;
+}
 
-  .title{
-    display:flex;
-    flex-direction: row;
-  }
+h1,
+h2 {
+  color: rgb(105, 125, 182);
+  text-align: center;
+}
 
-  html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .cardContainer {
-    width: auto;
-    height: 60vh;
-  }
-} */
+h1 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 2rem;
+  color: rgb(65, 84, 136);
+}
 
 .cardContainer {
-  width: 600px; /* changed height + width to make images bigger */
-  height: 600px;
+  width: 325px;
+  height: 325px;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -49,13 +46,14 @@ body {
   flex-wrap: wrap;
   perspective: 1000px; /* adds depth to cards when flipping */
   pointer-events: none;
+  margin-top: 20px;
 }
 
 .card {
   box-sizing: border-box;
-  width: calc(25% - 10px); /* changed height and width */
+  width: calc(25% - 5px); /* changed height and width */
   height: calc(
-    25% - 10px
+    25% - 5px
   ); /* calc function allows us to subtract margin from width and height */
   position: relative;
   transition: all 0.5s;
@@ -81,6 +79,7 @@ body {
     180deg
   ); /* tells back of card to also rotate 180 on the y-axis */
   transition: all 0.5s;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
 }
 
@@ -88,26 +87,44 @@ body {
 .card.flip {
   transform: rotateY(180deg);
   transition: all 0.2s;
-  backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* changed color for buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
 button {
-  border: 1px solid rgb(65, 84, 136);
-  height: 50px;
-  width: 122px;
+  border: 1px solid rgb(105, 125, 182);
+  height: 30px;
+  width: 160px;
   border-radius: 22px;
   color: rgb(1, 168, 168);
   background-color: rgb(241, 241, 167);
+  align-items: center;
+  font-family: "Yomogi", cursive;
 }
 
 .reset {
-  border: 1px solid rgb(65, 84, 136);
-  height: 50px;
-  width: 122px;
+  border: 1px solid rgb(105, 125, 182);
+  height: 30px;
+  width: 160px;
   border-radius: 22px;
   color: rgb(153, 91, 165);
   background-color: rgb(241, 241, 167);
+  margin-top: 5px;
+  font-family: "Yomogi", cursive;
+}
+
+.start:hover,
+.reset:hover {
+  color: rgb(241, 241, 167);
+  background: rgb(105, 125, 182);
 }
 
 .modal {
@@ -170,11 +187,209 @@ button {
 
 .fa-volume-off,
 .fa-volume-up {
-  height: 50px;
-  width: 50px;
+  height: 25px;
+  width: 25px;
   color: rgb(65, 84, 136);
+  margin-left: 10px;
+  margin-top: 15px;
+  display: inline;
+}
+
+.fa-volume-off:hover,
+.fa-volume-up:hover {
+  color: rgb(241, 241, 167);
 }
 
 .fa-volume-off {
   display: none;
 }
+
+/* ~~~~~~~~~DESKTOP VIEW~~~~~~~~~~ */
+
+@media only screen and (min-width: 768px) {
+  header {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: inherit;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  main {
+    display: flex;
+    margin: auto;
+    /* justify-content: unset; */
+    flex-grow: inherit;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 15%;
+    flex-wrap: wrap;
+    margin-right: 15%;
+    margin-left: 10px;
+  }
+
+  .cardContainer {
+    width: 600px;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    perspective: 1000px; /* adds depth to cards when flipping */
+    pointer-events: none;
+    margin-right: 20px;
+  }
+
+  .card {
+    box-sizing: border-box;
+    width: calc(25% - 10px); /* changed height and width */
+    height: calc(
+      25% - 10px
+    ); /* calc function allows us to subtract margin from width and height */
+    position: relative;
+    transition: all 0.5s;
+    transform-style: preserve-3d; /* also adds depth to cards while flipping */
+    transform: scale(1);
+    margin: auto;
+  }
+
+  .card:active {
+    transform: scale(0.97); /* will transform to 97% of its size */
+    transition: all 0.5s; /* allows us to click card */
+  }
+
+  .card_front,
+  .card_bottom {
+    position: absolute;
+    height: 100%;
+    width: 100%; /* fits both imgs to size of card container */
+  }
+
+  .card_bottom {
+    transform: rotateY(
+      180deg
+    ); /* tells back of card to also rotate 180 on the y-axis */
+    transition: all 0.5s;
+    backface-visibility: hidden; /* removes "mirror image" and prevents a "flickering" effect when card unflips when not a match*/
+  }
+
+  /* tutorial setting "flip" class from the toggle classList function */
+  .card.flip {
+    transform: rotateY(180deg);
+    transition: all 0.2s;
+    backface-visibility: hidden; /* overrides auto setting to show a mirror image of front face when "flipped" */
+  }
+
+  button {
+    border: 1px solid rgb(65, 84, 136);
+    height: 50px;
+    width: 100%;
+    border-radius: 22px;
+    color: rgb(1, 168, 168);
+    background-color: rgb(241, 241, 167);
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .reset {
+    border: 1px solid rgb(65, 84, 136);
+    height: 50px;
+    width: 100%;
+    border-radius: 22px;
+    color: rgb(153, 91, 165);
+    background-color: rgb(241, 241, 167);
+    margin-top: 10px;
+  }
+
+  .modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(65, 84, 136, 0.6);
+  }
+  .modal2 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(65, 84, 136, 0.6);
+  }
+  .modal3 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(65, 84, 136, 0.6);
+  }
+
+  .modalContent {
+    background: rgb(1, 168, 168);
+    margin: 15% auto;
+    padding: 20px;
+    border: 5px solid rgb(65, 84, 136);
+    width: 80%;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bolder;
+    color: rgb(65, 84, 136);
+  }
+
+  .close,
+  .close2,
+  .close3 {
+    color: rgb(153, 91, 165);
+    font-size: 1.5em;
+    display: block;
+  }
+
+  .close:hover,
+  .close:focus,
+  .close2:hover,
+  .close2:focus,
+  .close3:hover,
+  .close3:focus {
+    color: rgb(241, 241, 167);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .fa-volume-off,
+  .fa-volume-up {
+    height: 30px;
+    width: 30px;
+    color: rgb(65, 84, 136);
+  }
+
+  .fa-volume-off {
+    display: none;
+  }
+}
+
